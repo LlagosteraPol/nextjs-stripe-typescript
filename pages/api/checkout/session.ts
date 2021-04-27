@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 import Stripe from 'stripe';
 const stripe = new Stripe(
 
-'pk_test_51IkSkJGC3BvbM9Dfr7cjV3H4REqFRp6gqXK0jCDdbDnDcJtCW6lv2vo6AfZkoDDrbw8ROuPGcYu36Euy0kcHs3Zn00D10MvSP0'
+'sk_test_51IkSkJGC3BvbM9DfrNkzy3hBQSdkHrMyDL8tdjvERVuAClzSaHPUzdVjVZ5R3W8jngJaHdH1HOUY2pl3wmp3Nrej00hwznyiOk'
 , {
   apiVersion: '2020-08-27'
 });
@@ -19,13 +19,14 @@ export default async(req: NextApiRequest, res: NextApiResponse) => {
     payment_method_types: ['card'],
     line_items: [
       {
-        price: process.env.PRICE_ID,
+        //price: process.env.PRICE_ID,
+        price: 'price_1IkoX1GC3BvbM9DfTQtnmxs5',
         quantity,
       },
     ],
     mode: 'payment',
-    success_url: '${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}',
-    cancel_url: '${req.headers.origin}/checkout',
+    success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${req.headers.origin}/checkout`,
   });
   res.status(200).json({ sessionId: session.id })
 }
