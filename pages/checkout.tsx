@@ -1,6 +1,10 @@
 import {loadStripe} from '@stripe/stripe-js'
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) 
+//const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) 
+const stripePromise = loadStripe(
 
+    'pk_test_51IkSkJGC3BvbM9Dfr7cjV3H4REqFRp6gqXK0jCDdbDnDcJtCW6lv2vo6AfZkoDDrbw8ROuPGcYu36Euy0kcHs3Zn00D10MvSP0'
+    );
+    
 export default function Checkout(){
     const handleClick = async (event) => {
         // Call your backend to create the Checkout Session
